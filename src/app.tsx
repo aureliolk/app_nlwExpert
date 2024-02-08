@@ -1,4 +1,4 @@
-import { ChangeEvent, useState } from "react"
+import { ChangeEvent, useEffect, useState } from "react"
 import logo from "./assets/Logo.svg"
 import { FirstCard } from "./components/firstCards"
 import { LatestCards } from "./components/latestsCards"
@@ -12,13 +12,29 @@ interface NotesProps {
 export function App() {
   const [notes, setNotes] = useState<NotesProps[]>(() => {
     const noteOnStorage = localStorage.getItem("notes")
-    console.log(noteOnStorage)
     if (noteOnStorage) {
       return JSON.parse(noteOnStorage)
     }
     return []
   })
   const [serach, setSearch] = useState("")
+
+  useEffect(()=>{
+    async function getData() {
+      try {
+        const res = await fetch("http://localhost:3000/api");
+        if (!res.ok) {
+          throw new Error("Erro na solicitação HTTP");
+        }
+        const data = await res.json();
+        console.log(data);
+      } catch (err: any) {
+        console.log(err.message);
+      }
+    }
+
+    getData();
+  },[])
 
   function createNote(content: string) {
     const newNotes = {
