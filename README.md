@@ -24,6 +24,8 @@ A ideia para esse projeto é disponibilizar uma plataforma de notas rapidas;
 
 **Colabore com o projeto, Comentarios, Sugestões, Report de Bug, Melhorias para o projeto.❤️**
 
+[Ver Projeto em Produção](https://nlwexpert.acos-services.tech/)
+
 ## Tecnologias
 
 - [Vite](https://vitejs.dev/)
